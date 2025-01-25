@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6ucun4porrmv"]
+
+[ext_resource type="Texture2D" uid="uid://b7fxowpl3jy1" path="res://Assets/pixel-art-soap-speech-bubble-png-3866111218.png" id="1_53ra5"]
+[ext_resource type="Script" path="res://Scenes/entities/bullet_bubble.gd" id="1_w2e8o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dust1"]
+radius = 27.1662
+
+[node name="Bullet Bubble" type="Area2D"]
+script = ExtResource("1_w2e8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.0307292, 0.0307292)
+texture = ExtResource("1_53ra5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dust1")
