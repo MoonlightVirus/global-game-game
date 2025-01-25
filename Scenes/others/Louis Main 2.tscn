@@ -1,0 +1,289 @@
+[gd_scene load_steps=14 format=3 uid="uid://cq5xahqgixkhb"]
+
+[ext_resource type="Environment" uid="uid://dquai7pghtbvx" path="res://Shaders/new_environment.tres" id="1_2pavf"]
+[ext_resource type="PackedScene" uid="uid://dsg0emsoncbh7" path="res://character_body_3d test.tscn" id="2_0i5oj"]
+[ext_resource type="Texture2D" uid="uid://df7xsgqp1pm3i" path="res://assets/Background/FirstIterationBrick.png" id="2_b53ub"]
+[ext_resource type="Shader" path="res://Shaders/Floor.gdshader" id="2_rvoks"]
+[ext_resource type="Script" path="res://Scenes/main_camera.gd" id="3_c2200"]
+[ext_resource type="PackedScene" uid="uid://bf184b1tpt4ue" path="res://Scenes/Louis - Test Scenes/OxygenPack.tscn" id="4_2qfcd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84ci4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b81fr"]
+render_priority = 0
+shader = ExtResource("2_rvoks")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2dpm2"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("ShaderMaterial_b81fr")
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_jm0jg"]
+albedo_texture = ExtResource("2_b53ub")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_xgcxh"]
+dof_blur_far_enabled = true
+dof_blur_near_enabled = true
+dof_blur_amount = 0.05
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e51e5"]
+bg_color = Color(0.650128, 0.650128, 0.650128, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.270222, 0.270222, 0.270222, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 15
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.215902, 0.215902, 0.215902, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjkou"]
+bg_color = Color(0.14626, 0.569962, 0.692587, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 15
+corner_radius_bottom_left = 10
+
+[node name="Main2" type="Node3D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.62388, 0.676816, -0.39076, 4.18842e-08, 0.5, 0.866025, 0.78152, -0.540296, 0.31194, 0, 0, 0)
+light_energy = 0.808
+light_volumetric_fog_energy = 0.515
+shadow_enabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewportContainer/SubViewport/DirectionalLight3D"]
+transform = Transform3D(1, 6.62339e-09, -2.35015e-08, -2.98023e-08, 0.966832, -0.255412, -2.98023e-08, 0.255412, 0.966832, -4.55287, 2.06665, 116.034)
+light_color = Color(1, 1, 0.756863, 1)
+light_energy = 10.965
+light_indirect_energy = 1.97
+light_volumetric_fog_energy = 8.919
+spot_range = 20.8447
+spot_attenuation = 2.41
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = ExtResource("1_2pavf")
+
+[node name="Floor" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, 1, 0, 0, 0, 100, 86.2257, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Floor"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Floor"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, 0.523257, -85.2175, 0, 0.852175, 52.3257, 86.2257, 28.8811, -57.3034)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll6" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.39712, 0.994216, 10.6393, 299.965, 0.0150184, -0.259637, -1.25377, 0.106342, -99.4321, -62.2813, 71.5753, 51.9875)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll6"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll6"]
+transform = Transform3D(1, -9.09495e-12, -2.32831e-10, 0, 1, 9.53674e-07, 9.31323e-10, 0, 1, 1.21593e-05, -0.2472, -0.000264585)
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll7" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.39712, 0.994216, 10.6393, 299.965, 0.0150184, -0.259637, -1.25377, 0.106342, -99.4321, -62.2813, 71.5753, -42.0434)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll7"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll7"]
+transform = Transform3D(1, -5.68434e-12, 0, -1.49012e-08, 1, 0, 0, 0, 1, -0.000539064, 10.9698, 0.011739)
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll5" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, -0.1699, -98.5461, 0, 0.985461, -16.99, 86.2257, 111.669, -74.2941)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll5"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll5"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll2" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, -0.253268, -96.7396, 0, 0.967396, -25.3268, 85.8313, 33.4642, 48.6366)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll2"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll2"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll3" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, -0.253268, -96.7396, 0, 0.967396, -25.3268, 85.8313, 33.4642, 48.6366)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll3"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll3"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll4" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, 0.106576, -99.4305, 0, 0.994304, 10.6577, 85.8313, 118.173, 54.2726)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll4"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll4"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="Floor2" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 5, 6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Floor2"]
+transform = Transform3D(1, 0, 0, 0, 3.804, 0, 0, 0, 1, 0, -1.164, 0)
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Floor2"]
+transform = Transform3D(1, 0, 0, 0, 3.80404, 0, 0, 0, 1, 0, -1.16406, 0)
+mesh = SubResource("BoxMesh_2dpm2")
+surface_material_override/0 = SubResource("ORMMaterial3D_jm0jg")
+
+[node name="Floor3" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, -1, 11, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Floor3"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Floor3"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="Floor4" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, -2, 23, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Floor4"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Floor4"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport" groups=["player"] instance=ExtResource("2_0i5oj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="SubViewportContainer/SubViewport/CharacterBody3D"]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 6, 0)
+attributes = SubResource("CameraAttributesPractical_xgcxh")
+near = 0.001
+script = ExtResource("3_c2200")
+
+[node name="BlurRange" type="RayCast3D" parent="SubViewportContainer/SubViewport/CharacterBody3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -2, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0395355, 0.0179062, 0.0108337)
+light_color = Color(0.610999, 0.803049, 0.827816, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 2.0
+omni_range = 5.411
+omni_attenuation = 1.2
+
+[node name="OxygenTank" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 9)
+
+[node name="OxygenTank5" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2334, 50.103, 12.2317)
+
+[node name="OxygenTank6" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4115, 46.5269, -9.21994)
+
+[node name="OxygenTank7" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.647, 39.3744, 1.28983)
+
+[node name="OxygenTank8" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2577, 1.22791, -13.5535)
+
+[node name="OxygenTank9" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9276, 37.3877, -22.9182)
+
+[node name="OxygenTank10" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2487, 23.8772, -5.16559)
+
+[node name="OxygenTank11" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3248, 41.1205, 42.5352)
+
+[node name="OxygenTank12" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2185, 41.1206, 40.6441)
+
+[node name="OxygenTank13" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.7019, 39.3745, 34.6041)
+
+[node name="OxygenTank14" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.132, 25.4667, 20.8266)
+
+[node name="OxygenTank15" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.025, 25.4667, -21.3888)
+
+[node name="OxygenTank16" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.9909, 39.3743, -18.1)
+
+[node name="OxygenTank17" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.8731, 18.0293, 12.1001)
+
+[node name="OxygenTank18" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8764, 42.0278, 13.9548)
+
+[node name="OxygenTank2" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9, 2)
+
+[node name="OxygenTank3" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7, -13)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport"]
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewportContainer/SubViewport/CanvasLayer"]
+offset_left = 18.0
+offset_top = 27.0
+offset_right = 276.0
+offset_bottom = 54.0
+theme_override_styles/background = SubResource("StyleBoxFlat_e51e5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xjkou")
+value = 100.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="SubViewportContainer/SubViewport"]
+wait_time = 0.1
+one_shot = true
+
+[node name="oxygen_timer" type="Timer" parent="SubViewportContainer/SubViewport"]
+autostart = true
+
+[node name="bubble_timer" type="Timer" parent="SubViewportContainer/SubViewport"]
+
+[node name="OxygenTank4" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6)
+
+[connection signal="ready" from="SubViewportContainer/SubViewport/CharacterBody3D" to="SubViewportContainer/SubViewport/CharacterBody3D" method="_on_ready"]
+[connection signal="timeout" from="SubViewportContainer/SubViewport/Timer" to="SubViewportContainer/SubViewport/OxygenTank" method="_on_timer_timeout"]

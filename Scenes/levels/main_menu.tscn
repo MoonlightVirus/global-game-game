@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://4ps2jfup2ov"]
+
+[ext_resource type="VideoStream" path="res://Assets/bg.ogv" id="1_poi8i"]
+[ext_resource type="Texture2D" uid="uid://pq6vlsn7exqu" path="res://Assets/text-1737841340048.png" id="2_mvj2g"]
+[ext_resource type="Script" path="res://Scenes/entities/Menu_buttons.gd" id="3_d5afa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls0x3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x6o35"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8kkj"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsj3n"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_18q3c"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcj7y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_bottom = 10.0
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_poi8i")
+autoplay = true
+loop = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(554, 110)
+texture = ExtResource("2_mvj2g")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -233.0
+offset_top = -115.0
+offset_right = 67.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(0, 20)
+theme_override_constants/separation = 10
+script = ExtResource("3_d5afa")
+
+[node name="Play" type="Button" parent="Container"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.410327, 2.28621e-06, 1.08294e-06, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ls0x3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x6o35")
+theme_override_styles/normal = SubResource("StyleBoxFlat_p8kkj")
+text = "PLAY"
+
+[node name="Quit" type="Button" parent="Container"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.411765, 0, 0, 1)
+theme_override_colors/font_color = Color(0.95158, 0.95158, 0.95158, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tsj3n")
+theme_override_styles/hover = SubResource("StyleBoxFlat_18q3c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dcj7y")
+text = "QUIT"
+
+[connection signal="pressed" from="Container/Play" to="Container" method="_on_play_pressed"]
+[connection signal="pressed" from="Container/Quit" to="Container" method="_on_quit_pressed"]

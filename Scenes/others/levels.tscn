@@ -1,0 +1,151 @@
+[gd_scene load_steps=7 format=3 uid="uid://cceind3cbi306"]
+
+[ext_resource type="Script" path="res://Scenes/Louis - Test Scenes/levels.gd" id="1_1urdr"]
+[ext_resource type="VideoStream" path="res://assets/bg.ogv" id="2_3hsgr"]
+[ext_resource type="Texture2D" uid="uid://cc4uyrtk0e0h7" path="res://assets/text-1737809242473.png" id="3_1v27r"]
+
+[sub_resource type="SystemFont" id="SystemFont_nh5qr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_35rrm"]
+bg_color = Color(0.181571, 0.323745, 0.520658, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.920995, 0.920995, 0.920994, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_swhug"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.273909, 0.292053, 0.301982, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 3
+shadow_offset = Vector2(0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1urdr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1088.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="MarginContainer"]
+layout_mode = 2
+stream = ExtResource("2_3hsgr")
+autoplay = true
+loop = true
+
+[node name="Level 1" type="Button" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = -235.0
+offset_right = -250.0
+offset_bottom = -192.0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.145507, 0.188788, 0.390528, 1)
+theme_override_fonts/font = SubResource("SystemFont_nh5qr")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_35rrm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_swhug")
+text = "THE DEEP LAYER"
+
+[node name="Level 2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = -185.0
+offset_right = -250.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.145098, 0.188235, 0.392157, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_35rrm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_swhug")
+text = "THE MIDNIGHT LAYER"
+
+[node name="Level 3" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = -137.0
+offset_right = -250.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.145098, 0.188235, 0.392157, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_35rrm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_swhug")
+text = "THE SHALLOWS"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 250.0
+offset_top = -87.0
+offset_right = -250.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+theme_override_styles/hover = SubResource("StyleBoxFlat_35rrm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_swhug")
+text = "BACK"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(971, 275)
+scale = Vector2(3.25204, 3.71983)
+texture = ExtResource("3_1v27r")
+
+[connection signal="pressed" from="Level 1" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level 2" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Level 2" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Level 3" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Level 3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_levels_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_level_2_pressed"]

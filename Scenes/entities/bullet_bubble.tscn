@@ -4,14 +4,16 @@
 [ext_resource type="Script" path="res://Scenes/entities/bullet_bubble.gd" id="1_w2e8o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dust1"]
-radius = 27.1662
+radius = 18.0278
 
-[node name="Bullet Bubble" type="Area2D"]
+[node name="Bullet Bubble" type="RigidBody2D"]
+collision_layer = 2
+mass = 0.058
 script = ExtResource("1_w2e8o")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 1)
-scale = Vector2(0.0307292, 0.0307292)
+position = Vector2(-1.07288e-06, -1.07288e-06)
+scale = Vector2(0.0195313, 0.0195313)
 texture = ExtResource("1_53ra5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -14,10 +14,6 @@ config/name="global-game-game"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[dotnet]
-
-project/assembly_name="global-game-game"
-
 [input]
 
 up={

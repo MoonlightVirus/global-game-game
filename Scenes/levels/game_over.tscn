@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://b5jgrmwa5i4qq"]
+
+[ext_resource type="Script" path="res://Scenes/entities/game_over.gd" id="1_b1v6w"]
+[ext_resource type="Texture2D" uid="uid://du677srccuugo" path="res://Assets/text-1737841381545.png" id="1_n1mow"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nj5c8"]
+bg_color = Color(0.571454, 0, 0.04396, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.765603, 0, 0.0735382, 1)
+corner_radius_top_left = 20
+corner_radius_bottom_right = 20
+expand_margin_left = 15.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0.0857866, 0.0306975, 0.0224728, 0.6)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5wqo"]
+bg_color = Color(0.572549, 0, 0.0431373, 0)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.765603, 0, 0.0735382, 1)
+corner_radius_top_left = 15
+corner_radius_bottom_right = 15
+expand_margin_left = 15.0
+expand_margin_top = 5.0
+expand_margin_right = 15.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0.0857866, 0.0306975, 0.0224728, 0.6)
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b1v6w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.0431373, 0.0117647, 0.0823529, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(575, 301)
+scale = Vector2(1.34744, 1.34744)
+texture = ExtResource("1_n1mow")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 490.0
+offset_right = 659.0
+offset_bottom = 521.0
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.764706, 0, 0.0745098, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_nj5c8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_r5wqo")
+text = "The Abyss is Calling"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
