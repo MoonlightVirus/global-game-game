@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://4ps2jfup2ov"]
+[gd_scene load_steps=11 format=3 uid="uid://4ps2jfup2ov"]
 
 [ext_resource type="VideoStream" path="res://Assets/bg.ogv" id="1_poi8i"]
 [ext_resource type="Texture2D" uid="uid://pq6vlsn7exqu" path="res://Assets/text-1737841340048.png" id="2_mvj2g"]
+[ext_resource type="FontFile" uid="uid://boxu86ltmka62" path="res://Assets/alagard.ttf" id="3_4qy27"]
 [ext_resource type="Script" path="res://Scenes/entities/Menu_buttons.gd" id="3_d5afa"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls0x3"]
@@ -39,32 +40,34 @@ grow_vertical = 2
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -560.0
+offset_right = 960.0
+offset_bottom = 528.0
 grow_horizontal = 2
 grow_vertical = 2
 stream = ExtResource("1_poi8i")
 autoplay = true
 loop = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(554, 110)
-texture = ExtResource("2_mvj2g")
-
 [node name="Container" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -233.0
-offset_top = -115.0
-offset_right = 67.0
-offset_bottom = -25.0
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = -37.0
+offset_right = 81.0
+offset_bottom = 53.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(0, 20)
 theme_override_constants/separation = 10
@@ -74,7 +77,8 @@ script = ExtResource("3_d5afa")
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.410327, 2.28621e-06, 1.08294e-06, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("3_4qy27")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ls0x3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_x6o35")
 theme_override_styles/normal = SubResource("StyleBoxFlat_p8kkj")
@@ -84,11 +88,26 @@ text = "PLAY"
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(0.411765, 0, 0, 1)
 theme_override_colors/font_color = Color(0.95158, 0.95158, 0.95158, 1)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("3_4qy27")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_tsj3n")
 theme_override_styles/hover = SubResource("StyleBoxFlat_18q3c")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dcj7y")
 text = "QUIT"
+
+[node name="Title" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 221.0
+offset_bottom = 221.0
+grow_horizontal = 2
+
+[node name="Amidst the Abyss" type="Sprite2D" parent="Title"]
+position = Vector2(-1, 38)
+scale = Vector2(2, 2)
+texture = ExtResource("2_mvj2g")
 
 [connection signal="pressed" from="Container/Play" to="Container" method="_on_play_pressed"]
 [connection signal="pressed" from="Container/Quit" to="Container" method="_on_quit_pressed"]

@@ -1,0 +1,181 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqdr4a8e7hy6y"]
+
+[ext_resource type="Texture2D" uid="uid://qm6ff5kxqmo7" path="res://Assets/tadpole.png" id="1_ikevk"]
+[ext_resource type="Script" path="res://Scenes/entities/enemy_tadpole.gd" id="1_x3063"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48qlr"]
+size = Vector2(20.438, 109.541)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6hpi"]
+atlas = ExtResource("1_ikevk")
+region = Rect2(0, 0, 920, 920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cahk"]
+atlas = ExtResource("1_ikevk")
+region = Rect2(920, 0, 920, 920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duf74"]
+atlas = ExtResource("1_ikevk")
+region = Rect2(1840, 0, 920, 920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbs2s"]
+atlas = ExtResource("1_ikevk")
+region = Rect2(2760, 0, 920, 920)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2id7"]
+atlas = ExtResource("1_ikevk")
+region = Rect2(3680, 0, 920, 920)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5joi1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6hpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cahk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duf74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbs2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2id7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4nsop"]
+radius = 36.9779
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5ct7"]
+radius = 25.8782
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(388, -130)
+scale = Vector2(0.173999, 0.177333)
+collision_layer = 257
+collision_mask = 521
+motion_mode = 1
+script = ExtResource("1_x3063")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(15.5, -91)
+rotation = 0.0
+scale = Vector2(11.5292, 3.86096)
+skew = 0.0
+shape = SubResource("RectangleShape2D_48qlr")
+disabled = false
+one_way_collision = false
+one_way_collision_margin = 1.0
+script = null
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemy"]]
+sprite_frames = SubResource("SpriteFrames_5joi1")
+autoplay = "default"
+frame_progress = 0.51845
+
+[node name="Detection" type="Area2D" parent="." groups=["enemy"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection" groups=["enemy"]]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(40.16, 40.16)
+skew = 0.0
+shape = SubResource("CircleShape2D_4nsop")
+disabled = false
+one_way_collision = false
+one_way_collision_margin = 1.0
+script = null
+
+[node name="Collision" type="Area2D" parent="." groups=["enemy"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collision" groups=["enemy"]]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(22.9886, -67.6693)
+rotation = 0.0
+scale = Vector2(5.55211, 9.2745)
+skew = 0.0
+shape = SubResource("CircleShape2D_g5ct7")
+disabled = false
+one_way_collision = false
+one_way_collision_margin = 1.0
+script = null
+
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]
+[connection signal="body_entered" from="Collision" to="." method="_on_collision_body_entered"]

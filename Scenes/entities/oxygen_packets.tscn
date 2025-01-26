@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://k4m8lng51seh"]
+
+[ext_resource type="Script" path="res://Scripts/oxygen_packets.gd" id="1_yrfx6"]
+[ext_resource type="Texture2D" uid="uid://b7fxowpl3jy1" path="res://Assets/pixel-art-soap-speech-bubble-png-3866111218.png" id="2_i1bhn"]
+[ext_resource type="AudioStream" uid="uid://d0fc1qxy0b262" path="res://Sounds/pick-92276.mp3" id="3_wbnvr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wt0jf"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d2js7"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_cyllb"]
+
+[node name="OxygenPackets" type="Area2D" groups=["player"]]
+position = Vector2(388, -130)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_yrfx6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+visible = true
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+light_mask = 1
+visibility_layer = 1
+z_index = 0
+z_as_relative = true
+y_sort_enabled = false
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(1, 1)
+skew = 0.0
+shape = SubResource("CircleShape2D_wt0jf")
+disabled = false
+one_way_collision = false
+one_way_collision_margin = 1.0
+script = null
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." groups=["player"]]
+material = SubResource("CanvasItemMaterial_d2js7")
+scale = Vector2(22, 22)
+mesh = SubResource("QuadMesh_cyllb")
+texture = ExtResource("2_i1bhn")
+
+[node name="pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wbnvr")
+volume_db = 0.676
+autoplay = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
